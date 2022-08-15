@@ -59,9 +59,9 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="text", length=4294967295)
+     * @ORM\Column(name="adress", type="text", length=4294967295)
      */
-    private $address;
+    private $adress;
 
 
     /**
@@ -201,9 +201,9 @@ class Post
      *
      * @return Post
      */
-    public function setAddress($address)
+    public function setAdress($adress)
     {
-        $this->address = $address;
+        $this->adress = $adress;
 
         return $this;
     }
@@ -213,8 +213,8 @@ class Post
      *
      * @return string
      */
-    public function getAddress()
+    public function getAdress()
     {
-        return $this->address;
+        return $this->adress;
     }
 }
