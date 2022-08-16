@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+    <body>
+        {{message}}
+        <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Id</th>
+            <th style="border: 1px solid black;">Username</th>
+            <th style="border: 1px solid black;">Name</th>
+            <th style="border: 1px solid black;">Email</th>
+            <th style="border: 1px solid black;">Enable</th>
+            <th style="border: 1px solid black;">Birthdate</th>
+            <th style="border: 1px solid black;">Address</th>
+        </tr>
+        {% for t in table %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.id}}</td>
+                <td style="border: 1px solid black;">{{t.username}}</td>
+                <td style="border: 1px solid black;">{{t.name}}</td>
+                <td style="border: 1px solid black;">{{t.email}}</td>
+                <td style="border: 1px solid black;">{{t.enable}}</td>
+                <td style="border: 1px solid black;">{{t.birthdate}}</td>
+                <td style="border: 1px solid black;">{{t.address}}</td>
+                <td><a href="delete/{{t.id}}"><button>Supprimer</button></a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>
