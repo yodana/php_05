@@ -1,0 +1,33 @@
+ex05:
+    resource: "@ex05/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex04:
+    resource: "@ex04/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex03:
+    resource: "@ex03/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex02:
+    resource: "@ex02/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex01:
+    resource: "@ex01/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex00:
+    resource: "@ex00/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
