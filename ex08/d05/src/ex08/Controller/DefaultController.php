@@ -58,7 +58,7 @@ class DefaultController extends Controller
             . "account_id INT PRIMARY KEY,"
             . "amount int,"
             . "person_id int UNIQUE NOT NULL,"
-            . "CONSTRAINT person_id FOREIGN KEY (person_id) REFERENCES persons (id)"
+            . "CONSTRAINT bank_id FOREIGN KEY (person_id) REFERENCES persons (id)"
             . ");";
         $error = "Success: the table is created succefully";
         $em = $this->get('doctrine.orm.default_entity_manager');
@@ -72,7 +72,7 @@ class DefaultController extends Controller
         $sql = "CREATE TABLE addresses("
             . "name varchar(255),"
             . "person_id int NOT NULL,"
-            . "CONSTRAINT person_id FOREIGN KEY (person_id) REFERENCES persons (id)"
+            . "CONSTRAINT addresses_id FOREIGN KEY (person_id) REFERENCES persons (id)"
             . ");";
         $em = $this->get('doctrine.orm.default_entity_manager');
         try {
