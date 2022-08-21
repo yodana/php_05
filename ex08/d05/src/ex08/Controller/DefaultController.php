@@ -12,7 +12,6 @@ class DefaultController extends Controller
      */
     public function putButton()
     {
-
         return $this->render('ex08:Default:index.html.twig',[
             "error" => "",
             "buttons" => false,
@@ -49,6 +48,7 @@ class DefaultController extends Controller
             ]
         );
     }
+
     /**
      * @Route("/e08/create/tables")
      */
@@ -60,14 +60,14 @@ class DefaultController extends Controller
             . "person_id int UNIQUE NOT NULL,"
             . "CONSTRAINT bank_id FOREIGN KEY (person_id) REFERENCES persons (id)"
             . ");";
-        $error = "Success: the table is created succefully";
+        $error = "Success: the table is created succefully and the relation are made";
         $em = $this->get('doctrine.orm.default_entity_manager');
         try {
             $statement = $em->getConnection()->prepare($sql);
             $statement->execute();
         }
             catch(\Exception $e){
-                var_dump($e);
+                $error = "Error: the table already exist or relation failed.";
         }
         $sql = "CREATE TABLE addresses("
             . "name varchar(255),"
@@ -80,7 +80,30 @@ class DefaultController extends Controller
             $statement->execute();
         }
             catch(\Exception $e){
-                $error = $e;
+                $error = "Error: the table already exist or relation failed.";
+        }
+        return $this->render('ex08:Default:index.html.twig',[
+            "error" => $error,
+            "buttons" => true,
+            ]
+        );
+    }
+
+     /**
+     * @Route("/e08/create/column")
+     */
+    public function createColumn()
+    {
+        $sql = "ALTER TABLE persons\n"
+            . " ADD marital_status ENUM('single', 'married', 'widower');";
+        $error = "The column is adding succefully";
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        try {
+            $statement = $em->getConnection()->prepare($sql);
+            $statement->execute();
+        }
+            catch(\Exception $e){
+                $error = "Error: the column already exist.";
         }
         return $this->render('ex08:Default:index.html.twig',[
             "error" => $error,
