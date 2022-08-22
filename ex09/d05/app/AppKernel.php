@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new AppBundle\AppBundle(),
             new ex00\ex00(),
             new ex01\ex01(),
@@ -26,7 +27,7 @@ class AppKernel extends Kernel
             new ex06\ex06(),
             new ex07\ex07(),
             new ex08\ex08(),
-            new ex09Bundle\ex09Bundle(),
+            new ex09\ex09(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

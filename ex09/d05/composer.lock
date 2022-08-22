@@ -20,9 +20,6 @@
                 "reference": "d6169430c7731d8509da7aecd0af756a5747b78e",
                 "shasum": ""
             },
-            "require": {
-                "php": ">=5.3"
-            },
             "require-dev": {
                 "phpunit/phpunit": "^9.3 || ^5.7 || ^4.8.36"
             },
@@ -130,7 +127,6 @@
             "require": {
                 "doctrine/lexer": "1.*",
                 "ext-tokenizer": "*",
-                "php": "^7.1 || ^8.0",
                 "psr/cache": "^1 || ^2 || ^3"
             },
             "require-dev": {

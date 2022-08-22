@@ -1,9 +1,9 @@
 <?php
 
-namespace ex09Bundle;
+namespace ex09;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ex09Bundle extends Bundle
+class ex09 extends Bundle
 {
 }

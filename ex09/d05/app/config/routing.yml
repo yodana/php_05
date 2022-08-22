@@ -1,5 +1,5 @@
 ex09:
-    resource: "@ex09Bundle/Controller/"
+    resource: "@ex09/Controller/"
     type:     annotation
     prefix:   /
 

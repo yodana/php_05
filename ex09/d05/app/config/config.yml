@@ -11,7 +11,7 @@ imports:
     - { resource: "@ex06/Resources/config/services.yml" }
     - { resource: "@ex07/Resources/config/services.yml" }
     - { resource: "@ex08/Resources/config/services.yml" }
-    - { resource: "@ex09Bundle/Resources/config/services.yml" }
+    - { resource: "@ex09/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -69,6 +69,10 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+
+doctrine_migrations:
+    migrations_paths:
+        DoctrineMigrations: '%kernel.project_dir%/src/Migrations'
 
 # Swiftmailer Configuration
 swiftmailer:
