@@ -65,6 +65,20 @@ class post
      */
     private $marital_status;
 
+     /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="bank_account", mappedBy="post")
+     */
+    private $bank_account;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="addresses", mappedBy="post")
+     */
+    private $addresses;
+
     /**
      * Get id.
      *
