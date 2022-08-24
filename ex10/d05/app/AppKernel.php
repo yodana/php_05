@@ -27,7 +27,8 @@ class AppKernel extends Kernel
             new ex06\ex06(),
             new ex07\ex07(),
             new ex08\ex08(),
-            new ex09\ex09()
+            new ex09\ex09(),
+            new ex10\ex10(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
