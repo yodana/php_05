@@ -27,11 +27,11 @@ class DefaultController extends Controller
         $line = fgets($file);
         $em = $this->getDoctrine()->getManager();
         $person = new PersonORM();
-        $person->setUsername($line[0]);
+        $person->setUsername($line);
         $em->persist($person);
         $em->flush();
         $sql = "INSERT into person_e10(username) VALUES ('" 
-            . $line[0] . "');";
+            . $line . "');";
         $em = $this->get('doctrine.orm.default_entity_manager');
         $statement = $em->getConnection()->prepare($sql);
         $statement->execute();
