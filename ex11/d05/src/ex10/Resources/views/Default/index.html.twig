@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+    <body>
+        <a href="/e10/add"><button>Add file</button></a>
+        <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Id sql</th>
+            <th style="border: 1px solid black;">Username sql</th>
+        </tr>
+        {% for t in table_sql %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.id}}</td>
+                <td style="border: 1px solid black;">{{t.username}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Id orm</th>
+            <th style="border: 1px solid black;">Username orm</th>
+        </tr>
+        {% for t in table_orm %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.id}}</td>
+                <td style="border: 1px solid black;">{{t.username}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>

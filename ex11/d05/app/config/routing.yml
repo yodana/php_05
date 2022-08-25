@@ -1,0 +1,63 @@
+ex11:
+    resource: "@ex11/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex10:
+    resource: "@ex10/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex09:
+    resource: "@ex09/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex08:
+    resource: "@ex08/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex07:
+    resource: "@ex07/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex06:
+    resource: "@ex06/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex05:
+    resource: "@ex05/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex04:
+    resource: "@ex04/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex03:
+    resource: "@ex03/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex02:
+    resource: "@ex02/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex01:
+    resource: "@ex01/Controller/"
+    type:     annotation
+    prefix:   /
+
+ex00:
+    resource: "@ex00/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
