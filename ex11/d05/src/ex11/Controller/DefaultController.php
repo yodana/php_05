@@ -1,7 +1,6 @@
 <?php
 
 namespace ex11\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use ex11\Entity\addresses;
@@ -20,13 +19,13 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $error = "";
-        $sql = "SELECT bank_account.id, person_e11.username, person_e11.name, person_e11.email, person_e11.enable, person_e11.birthdate, person_e11.marital_statut, addresses.a_name, bank_account.amount FROM person_e11 LEFT JOIN bank_account ON person_e11.id=bank_account.bank_id LEFT JOIN addresses ON person_e11.id=addresses.addresses_id;";
+        $sql = "SELECT bank_account_e11.id, person_e11.username, person_e11.name, person_e11.email, person_e11.enable, person_e11.birthdate, person_e11.marital_statut, address.a_name, bank_account_e11.amount FROM person_e11 LEFT JOIN bank_account_e11 ON person_e11.id=bank_account_e11.bank_id LEFT JOIN address ON person_e11.id=address.addresses_id;";
         $em = $this->get('doctrine.orm.default_entity_manager');
         try {
             $statement = $em->getConnection()->prepare($sql);
             $statement->execute();
         }
-        catch(\Exception $e){
+        catch(Exception $e){
             $error = "Error";
         }
         $table = [];
@@ -57,7 +56,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
         if ($form->isValid() && $form->isSubmitted()){
             if($form["filtrage"]->getData() == true){
-                $sql = "SELECT bank_account.id, person_e11.username, person_e11.name, person_e11.email, person_e11.enable, person_e11.birthdate, person_e11.marital_statut, addresses.a_name, bank_account.amount FROM person_e11 LEFT JOIN bank_account ON person_e11.id=bank_account.bank_id LEFT JOIN addresses ON person_e11.id=addresses.addresses_id ORDER BY birthdate;";
+                $sql = "SELECT bank_account_e11.id, person_e11.username, person_e11.name, person_e11.email, person_e11.enable, person_e11.birthdate, person_e11.marital_statut, address.a_name, bank_account_e11.amount FROM person_e11 LEFT JOIN bank_account_e11 ON person_e11.id=bank_account_e11.bank_id LEFT JOIN address ON person_e11.id=address.addresses_id ORDER BY birthdate;";
                 $em = $this->get('doctrine.orm.default_entity_manager');
                 try {
                     $statement = $em->getConnection()->prepare($sql);
@@ -87,7 +86,7 @@ class DefaultController extends Controller
                 ]);
             }
             else{
-                $sql = "SELECT bank_account.id, person_e11.username, person_e11.name, person_e11.email, person_e11.enable, person_e11.birthdate, person_e11.marital_statut, addresses.a_name, bank_account.amount FROM person_e11 LEFT JOIN bank_account ON person_e11.id=bank_account.bank_id LEFT JOIN addresses ON person_e11.id=addresses.addresses_id ORDER BY username;";
+                $sql = "SELECT bank_account_e11.id, person_e11.username, person_e11.name, person_e11.email, person_e11.enable, person_e11.birthdate, person_e11.marital_statut, address.a_name, bank_account_e11.amount FROM person_e11 LEFT JOIN bank_account_e11 ON person_e11.id=bank_account_e11.bank_id LEFT JOIN address ON person_e11.id=address.addresses_id ORDER BY username;";
                 $em = $this->get('doctrine.orm.default_entity_manager');
                 try {
                     $statement = $em->getConnection()->prepare($sql);

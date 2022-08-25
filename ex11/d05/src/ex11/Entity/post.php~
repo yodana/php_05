@@ -1,6 +1,6 @@
 <?php
 
-namespace ex09\Entity;
+namespace ex11\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * post
  *
  * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="ex09\Repository\postRepository")
+ * @ORM\Entity(repositoryClass="ex11\Repository\postRepository")
  */
 class post
 {

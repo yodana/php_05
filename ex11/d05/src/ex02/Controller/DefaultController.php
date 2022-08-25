@@ -17,14 +17,14 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $sql = "CREATE TABLE IF NOT EXISTS person_e02("
+        $sql = "CREATE TABLE IF NOT EXISTS person_e11("
             . "id int NOT NULL AUTO_INCREMENT,"
             . "username varchar(255) UNIQUE,"
             . "name varchar(255),"
             . "email varchar(255) UNIQUE,"
             . "enable boolean,"
             . "birthdate datetime,"
-            . "address LONGTEXT,"
+            . "marital_statut boolean,"
             . "PRIMARY KEY (id)"
             . ");";
         $em = $this->get('doctrine.orm.default_entity_manager');
@@ -47,7 +47,7 @@ class DefaultController extends Controller
             ->add('save', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
-        $sql_user = "SELECT * FROM person_e02 WHERE username ='".$form["username"]->getData()."'";
+        /*$sql_user = "SELECT * FROM person_e02 WHERE username ='".$form["username"]->getData()."'";
         $sql_mail = "SELECT * FROM person_e02 WHERE email ='".$form["email"]->getData()."'";
         $statement_u = $em->getConnection()->prepare($sql_user);
         $statement_u->execute();
@@ -71,7 +71,7 @@ class DefaultController extends Controller
                     'error' => "User or Email exist already",
                 ]);
             }
-        }
+        }*/
         return $this->render('ex02:Default:index.html.twig', [
             'form' => $form->createView(),
             'error' => "",

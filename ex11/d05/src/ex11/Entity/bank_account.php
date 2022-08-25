@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * bank_account
  *
- * @ORM\Table(name="bank_account")
+ * @ORM\Table(name="bank_account_e11")
  * @ORM\Entity(repositoryClass="ex11\Repository\bank_accountRepository")
  */
 class bank_account
