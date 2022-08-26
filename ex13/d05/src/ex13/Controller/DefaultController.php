@@ -48,10 +48,10 @@ class DefaultController extends Controller
     {
         $error = "";
         $form = $this->createFormBuilder()
-            ->add('username', TypeTextType::class)
-            ->add('name', TypeTextType::class)
+            ->add('firstname', TypeTextType::class)
+            ->add('lastname', TypeTextType::class)
             ->add('email', TypeTextType::class)
-            ->add('enable', ChoiceType::class,
+            ->add('active', ChoiceType::class,
                 [ 
                     'choices' => 
                     [   
@@ -60,7 +60,32 @@ class DefaultController extends Controller
                     ],
                 ])
             ->add('birthdate', DateType::class)
-            ->add('address', TypeTextType::class)
+            ->add('employee_since', DateType::class)
+            ->add('employee_until', DateType::class)
+            ->add('hours', ChoiceType::class,
+                [ 
+                    'choices' => 
+                    [   
+                        '8' => '8',
+                        '6' => '6',    
+                        '4' => '4',     
+                    ],
+                ])
+            ->add('position', ChoiceType::class,
+                [ 
+                    'choices' => 
+                    [   
+                        'manager' => 'manager',
+                        'account_manager' => 'account_manager',    
+                        'qa_manager' => 'qa_manager',
+                        'dev_manager' => 'dev_manager',
+                        'ceo' => 'ceo',
+                        'coo' => 'coo',
+                        'backend_dev' => 'backend_dev',
+                        'frontend_dev' => 'frontend_dev',
+                        'qa_tester' => 'qa_tester',    
+                    ],
+                ])
             ->add('save', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
