@@ -3,11 +3,13 @@
 namespace ex13\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Employee
  *
  * @ORM\Table(name="employee")
+ * @UniqueEntity("email")
  * @ORM\Entity(repositoryClass="ex13\Repository\EmployeeRepository")
  */
 class Employee
@@ -95,7 +97,7 @@ class Employee
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="employee", inversedBy="employee")
-     * @ORM\JoinColumn(name="superiors", referencedColumnName="id")
+     * @ORM\JoinColumn(name="superiors", referencedColumnName="id", onDelete="CASCADE")
      */
     private $superiors;
 
@@ -103,6 +105,7 @@ class Employee
      * @var int
      *
      * @ORM\OneToMany(targetEntity="employee", mappedBy="superiors")
+     * @ORM\JoinColumn(name="employee", referencedColumnName="id", onDelete="CASCADE")
      */
     private $employee;
 
@@ -177,7 +180,22 @@ class Employee
 
         return $this;
     }
+    
+    /**
+     * Set superiors.
+     *
+     * @param employee
+     *
+     * @return employee
+     */
+    public function setSuperiors($superiors)
+    {
+        $this->superiors = $superiors;
 
+        return $this;
+    }
+
+    
     /**
      * Get email.
      *
@@ -307,4 +325,57 @@ class Employee
     {
         return $this->salary;
     }
+
+      /**
+     * Set hours.
+     *
+     * @param enum $hours
+     *
+     * @return string
+     */
+    public function setHours($hours)
+    {
+        $this->hours = $hours;
+
+        return $this;
+    }
+        
+      /**
+     * Get hours.
+     *
+     * @param enum $hours
+     *
+     * @return string
+     */
+    public function getHours()
+    {
+        return $this->hours;
+    }
+
+       /**
+     * Set position.
+     *
+     * @param enum $position
+     *
+     * @return string
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+        
+      /**
+     * Set position.
+     *
+     * @param enum $hours
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
 }
