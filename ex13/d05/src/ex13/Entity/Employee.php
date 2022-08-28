@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Employee
  *
  * @ORM\Table(name="employee")
- * @UniqueEntity("email")
+ * @UniqueEntity("email", "lastname")
  * @ORM\Entity(repositoryClass="ex13\Repository\EmployeeRepository")
  */
 class Employee
@@ -97,7 +97,7 @@ class Employee
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="employee", inversedBy="employee")
-     * @ORM\JoinColumn(name="superiors", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="superiors", referencedColumnName="id", onDelete="SET NULL")
      */
     private $superiors;
 
@@ -105,7 +105,7 @@ class Employee
      * @var int
      *
      * @ORM\OneToMany(targetEntity="employee", mappedBy="superiors")
-     * @ORM\JoinColumn(name="employee", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="employee", referencedColumnName="id", onDelete="SET NULL")
      */
     private $employee;
 
@@ -193,6 +193,18 @@ class Employee
         $this->superiors = $superiors;
 
         return $this;
+    }
+
+    /**
+     * Get superiors.
+     *
+     * @param employee
+     *
+     * @return employee
+     */
+    public function getSuperiors()
+    {
+        return $this->superiors;
     }
 
     

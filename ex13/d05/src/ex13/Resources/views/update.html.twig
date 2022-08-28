@@ -2,9 +2,8 @@
 <html>
     <body>
         {{error}}
+        {{form(form)}}
         {% if button == false %}
-            {{form(form)}}
-
         <table style="border: 1px solid black;">
         <tr>
             <th style="border: 1px solid black;">Lastname</th>
@@ -39,7 +38,7 @@
         </table>
         {% endif %}
         {% if button == true %}
-        <a href="/e13/"><button>Retour au formulaire</button></a>
+            <a href="/e13/"><button>Retour au formulaire</button></a>
         {% endif %}
     </body>
 </html>
