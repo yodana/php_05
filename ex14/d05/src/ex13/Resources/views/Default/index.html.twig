@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<html>
+    <body>
+        {{error}}
+        {% if button == false %}
+            {{form(form)}}
+
+        <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Lastname</th>
+            <th style="border: 1px solid black;">FirstName</th>
+            <th style="border: 1px solid black;">Email</th>
+            <th style="border: 1px solid black;">Active</th>
+            <th style="border: 1px solid black;">Birthdate</th>
+            <th style="border: 1px solid black;">Employee Since</th>
+            <th style="border: 1px solid black;">Employee Until</th>
+            <th style="border: 1px solid black;">Salary</th>
+            <th style="border: 1px solid black;">Hours</th>
+            <th style="border: 1px solid black;">Position</th>
+            <th style="border: 1px solid black;">Name Superior</th>
+        </tr>
+        {% for t in table %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.lastname}}</td>
+                <td style="border: 1px solid black;">{{t.firstname}}</td>
+                <td style="border: 1px solid black;">{{t.email}}</td>
+                <td style="border: 1px solid black;">{{t.active}}</td>
+                <td style="border: 1px solid black;">{{t.birthdate}}</td>
+                <td style="border: 1px solid black;">{{t.employee_since}}</td>
+                <td style="border: 1px solid black;">{{t.employee_until}}</td>
+                <td style="border: 1px solid black;">{{t.salary}}</td>
+                <td style="border: 1px solid black;">{{t.hours}}</td>
+                <td style="border: 1px solid black;">{{t.position}}</td>
+                <td style="border: 1px solid black;">{{t.name_superior}}</td>
+                <td><a href="/e13/delete/{{t.id}}"><button>Delete</button></a></td>
+                <td><a href="/e13/update/{{t.id}}"><button>Update</button></a></td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% endif %}
+        {% if button == true %}
+        <a href="/e13/"><button>Retour au formulaire</button></a>
+        {% endif %}
+    </body>
+</html>

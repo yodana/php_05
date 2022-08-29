@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html>
+    <body>
+        {{error}}
+         <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Id</th>
+            <th style="border: 1px solid black;">Username</th>
+        </tr>
+        {% for t in table %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.id}}</td>
+                <td style="border: 1px solid black;">{{t.username}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        <a href="/e14/create"><button>Creer la table</button></a>
+        <form action="/e14/form">
+            <input type="text"/ id="username" name="_username">
+            <input type="submit" value="Rajoutez un user" />
+        </form>
+    </body>
+</html>
