@@ -38,6 +38,19 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $sql = "CREATE TABLE IF NOT EXISTS person_e06("
+        . "id int NOT NULL AUTO_INCREMENT,"
+        . "username varchar(255) UNIQUE,"
+        . "name varchar(255),"
+        . "email varchar(255) UNIQUE,"
+        . "enable boolean,"
+        . "birthdate datetime,"
+        . "address LONGTEXT,"
+        . "PRIMARY KEY (id)"
+        . ");";
+    $em = $this->get('doctrine.orm.default_entity_manager');
+    $statement = $em->getConnection()->prepare($sql);
+    $statement->execute();
         $table = $this->getTable();
         return $this->render('ex06::table.html.twig',[
             'table' => $table,
@@ -51,6 +64,7 @@ class DefaultController extends Controller
      */
     public function update($id, Request $request)
     {
+
         $sql = "SELECT * from person_e06 WHERE id=" . $id;
         $em = $this->get('doctrine.orm.default_entity_manager');
         $statement = $em->getConnection()->prepare($sql);

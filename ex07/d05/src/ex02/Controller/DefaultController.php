@@ -47,15 +47,15 @@ class DefaultController extends Controller
             ->add('save', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
-        $sql_user = "SELECT * FROM person_e02 WHERE username ='".$form["username"]->getData()."'";
-        $sql_mail = "SELECT * FROM person_e02 WHERE email ='".$form["email"]->getData()."'";
+        $sql_user = "SELECT * FROM person_e07 WHERE username ='".$form["username"]->getData()."'";
+        $sql_mail = "SELECT * FROM person_e07 WHERE email ='".$form["email"]->getData()."'";
         $statement_u = $em->getConnection()->prepare($sql_user);
         $statement_u->execute();
         $statement_m = $em->getConnection()->prepare($sql_mail);
         $statement_m->execute();
         if ($form->isValid() && $form->isSubmitted()){
             if (count($statement_u->fetchAll()) == 0 && count($statement_m->fetchAll()) == 0){
-            $sql_insert = "INSERT into person_e02(username, name, email, enable, birthdate, address) VALUES ('" 
+            $sql_insert = "INSERT into person_e07(username, name, email, enable, birthdate, address) VALUES ('" 
             . $form["username"]->getData() 
             . "','" . $form["name"]->getData() 
             . "','" . $form["email"]->getData() 

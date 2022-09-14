@@ -55,7 +55,7 @@ class DefaultController extends Controller
         $statement_m->execute();
         if ($form->isValid() && $form->isSubmitted()){
             if (count($statement_u->fetchAll()) == 0 && count($statement_m->fetchAll()) == 0){
-            $sql_insert = "INSERT into person_e02 (username, name, email, enable, birthdate, address) VALUES ('" 
+            $sql_insert = "INSERT into person_e06 (username, name, email, enable, birthdate, address) VALUES ('" 
             . $form["username"]->getData() 
             . "','" . $form["name"]->getData() 
             . "','" . $form["email"]->getData() 

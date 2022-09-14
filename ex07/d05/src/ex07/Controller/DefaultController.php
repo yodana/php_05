@@ -10,6 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
+use Symfony\Bundle\FrameworkBundle\Console\Application as ConsoleApplication;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -44,6 +48,16 @@ class DefaultController extends Controller
      * @Route("/e07/")
      */
     public function indexAction(){
+        $application = new ConsoleApplication($this->get('kernel'));
+        $application->setAutoExit(false);
+        $error =  "Success: the table is created succefully";
+        $input = new ArrayInput([
+            'command' => 'doctrine:schema:update',
+            '--force' => true,
+        ]);
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+        $content = $output->fetch();
         $table = $this->getTable();
         return $this->render('ex07::table.html.twig',[
                 "table" => $table,
@@ -56,8 +70,6 @@ class DefaultController extends Controller
     public function update($id, Request $request){
         $entityManager = $this->getDoctrine()->getManager();
         $person = $entityManager->getRepository(Post::class)->find($id);
-        //$product->setName('New product name!');
-        //$entityManager->flush();
         $i = 0;
         $table = [];
         foreach((array)$person as $e){

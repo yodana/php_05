@@ -1,7 +1,10 @@
 <?php
 
 namespace ex05\Controller;
-
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Console\Application as ConsoleApplication;
 use ex05\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,6 +42,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $application = new ConsoleApplication($this->get('kernel'));
+        $application->setAutoExit(false);
+        $error =  "Success: the table is created succefully";
+        $input = new ArrayInput([
+            'command' => 'doctrine:schema:update',
+            '--force' => true,
+        ]);
+        $output = new BufferedOutput();
+        $application->run($input, $output);
+        $content = $output->fetch();
         $table = $this->getTable();
         return $this->render('ex05::table.html.twig',[
             'table' => $table,
